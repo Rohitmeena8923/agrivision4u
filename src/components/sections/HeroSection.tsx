@@ -29,9 +29,9 @@ export default function HeroSection() {
                             transition={{ duration: 0.7 }}
                             className="font-display text-[2.75rem] sm:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.05] tracking-tight text-charcoal mb-4"
                         >
-                            Climate-Smart<br />
-                            <span className="text-primary italic">Agriculture,</span><br />
-                            Elevated.
+                            Building a<br />
+                            <span className="text-primary italic">Climate-Ready</span><br />
+                            Tomorrow.
                         </motion.h1>
 
                         <motion.p
@@ -40,8 +40,8 @@ export default function HeroSection() {
                             transition={{ duration: 0.7, delay: 0.2 }}
                             className="text-base sm:text-lg text-charcoal/80 leading-relaxed mb-8 font-sans"
                         >
-                            India&apos;s premier consultancy for disaster management, climate data,
-                            and sustainable agri-waste solutions.
+                            Expert consulting in disaster management, agri-waste technology,
+                            and data-driven sustainability strategies.
                         </motion.p>
 
                         <motion.div
