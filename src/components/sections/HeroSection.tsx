@@ -12,17 +12,6 @@ export default function HeroSection() {
 
                     {/* Left Column: Headline & copy */}
                     <div className="flex flex-col items-start justify-center text-left z-10 max-w-xl">
-                        {/* Top pill badge */}
-                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mb-6">
-                            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-border text-sm shadow-sm">
-                                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                                New
-                                <Link href="/#services" className="flex items-center gap-1 px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold ml-1 hover:bg-primary-light transition-colors">
-                                    Explore our services <ArrowUpRight className="w-3 h-3" />
-                                </Link>
-                            </span>
-                        </motion.div>
-
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -91,7 +80,7 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Disaster Mgt</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">AI risk prediction</p>
-                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                <div className="mt-3 px-1.5 flex items-center gap-2">
                                     <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
                                     <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
                                         <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
@@ -113,7 +102,7 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Food Labelling</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">FSSAI certification</p>
-                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                <div className="mt-3 px-1.5 flex items-center gap-2">
                                     <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
                                     <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
                                         <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
@@ -135,7 +124,7 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Agri Waste</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Bioenergy solutions</p>
-                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                <div className="mt-3 px-1.5 flex items-center gap-2">
                                     <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
                                     <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
                                         <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
@@ -160,7 +149,7 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Data</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Drone surveys</p>
-                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                <div className="mt-3 px-1.5 flex items-center gap-2">
                                     <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
                                     <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
                                         <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
@@ -182,7 +171,7 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Finance</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Carbon credits advisory</p>
-                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                <div className="mt-3 px-1.5 flex items-center gap-2">
                                     <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
                                     <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
                                         <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
