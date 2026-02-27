@@ -27,7 +27,7 @@ export default function HeroSection() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7 }}
-                            className="font-serif text-[2.75rem] sm:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.05] tracking-tight text-charcoal mb-4"
+                            className="font-display text-[2.75rem] sm:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.05] tracking-tight text-charcoal mb-4"
                         >
                             Climate-Smart<br />
                             <span className="text-primary italic">Agriculture,</span><br />
@@ -89,7 +89,7 @@ export default function HeroSection() {
                                         <span className="text-[8px] text-white font-bold tracking-wider">ADVISORY</span>
                                     </div>
                                 </div>
-                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Disaster Mgt</h3>
+                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Disaster Mgt</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">AI risk prediction</p>
                             </motion.div>
 
@@ -105,7 +105,7 @@ export default function HeroSection() {
                                         <span className="text-[8px] text-white font-bold tracking-wider">COMPLIANCE</span>
                                     </div>
                                 </div>
-                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Food Labelling</h3>
+                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Food Labelling</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">FSSAI certification</p>
                             </motion.div>
 
@@ -121,7 +121,7 @@ export default function HeroSection() {
                                         <span className="text-[8px] text-white font-bold tracking-wider">TECHNOLOGY</span>
                                     </div>
                                 </div>
-                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Agri Waste</h3>
+                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Agri Waste</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Bioenergy solutions</p>
                             </motion.div>
                         </div>
@@ -140,7 +140,7 @@ export default function HeroSection() {
                                         <span className="text-[8px] text-white font-bold tracking-wider">INTELLIGENCE</span>
                                     </div>
                                 </div>
-                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Data</h3>
+                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Data</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Drone surveys</p>
                             </motion.div>
 
@@ -156,7 +156,7 @@ export default function HeroSection() {
                                         <span className="text-[8px] text-white font-bold tracking-wider">CARBON</span>
                                     </div>
                                 </div>
-                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Finance</h3>
+                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Finance</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Carbon credits advisory</p>
                             </motion.div>
                         </div>
