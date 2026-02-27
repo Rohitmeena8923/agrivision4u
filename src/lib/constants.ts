@@ -154,6 +154,19 @@ export const caseStudies = [
         excerpt: "Deployed satellite + drone surveys across 5 districts to assess crop loss from the 2024 monsoon floods, enabling ₹500 Cr in SDRF disbursement.",
         metrics: { area: "50,000 Ha", farmers: "10,000+", time: "15 Days", accuracy: "96%" },
         image: "/images/disaster-management.png",
+        content: `The 2024 monsoon floods in Maharashtra devastated thousands of hectares of agricultural land, leaving farmers struggling and the government facing an immense challenge in loss assessment and compensation disbursement. Agrivision4u was deployed to execute a rapid damage assessment using advanced spatial technologies.
+
+## The Challenge
+Traditional Crop Cutting Experiments (CCEs) and manual field surveys would have taken months to complete across the 5 affected districts. The delay in processing claims would have severely impacted the financial stability of over 10,000 farmers.
+
+## Our Approach
+We deployed a hybrid remote sensing approach:
+- **Satellite Analytics**: Used Sentinel-1 (SAR) imagery, which penetrates cloud cover, to map flood inundation extents within 48 hours of the event.
+- **Drone Surveys**: Deployed a fleet of fixed-wing and quadcopter drones equipped with multispectral cameras to capture high-resolution ($<$5cm GSD) imagery of affected zones.
+- **AI Classification**: Our proprietary machine learning models classified crop health and damage severity by comparing pre-flood and post-flood vegetation indices (NDVI/EVI).
+
+## The Results
+The entire assessment covering 50,000 hectares was completed in just 15 days, achieving a ground-truthed accuracy of 96%. This expedited analysis allowed the State Disaster Response Fund (SDRF) to disburse ₹500 Cr in compensation months earlier than usual, providing critical relief to the farming community.`,
     },
     {
         slug: "carbon-credit-rajasthan",
@@ -162,6 +175,19 @@ export const caseStudies = [
         excerpt: "Designed and registered a Verra VM0042 carbon project covering 3,000 hectares of arid agricultural land, generating 15,000 tCO2e/year.",
         metrics: { hectares: "3,000 Ha", credits: "15,000 tCO2e", farmers: "1,200", revenue: "₹45L/yr" },
         image: "/images/climate-finance.png",
+        content: `Soil carbon sequestration represents a massive opportunity for Indian farmers to generate additional income while improving soil health. Agrivision4u partnered with an FPO in Rajasthan to develop a globally recognized carbon credit project under the Verra VM0042 methodology.
+
+## The Challenge
+Arid regions in Rajasthan suffer from severe soil degradation and low organic carbon. Transitioning 1,200 marginal farmers to climate-smart agricultural (CSA) practices required a robust financial incentive mechanism and rigorous scientific baseline setting.
+
+## Our Approach
+- **Baseline Establishment**: Conducted grid-based soil sampling across 3,000 hectares to establish the initial Soil Organic Carbon (SOC) baseline.
+- **Intervention Design**: Implemented agroforestry models, biochar application, and reduced tillage practices tailored to local agronomic conditions.
+- **MRV Setup**: Designed a digital Monitoring, Reporting, and Verification (MRV) system using IoT sensors and satellite biomass tracking to continuously validate carbon sequestration.
+- **Registration**: Managed the complex end-to-end documentation and third-party validation process for Verra registration.
+
+## The Results
+The project successfully registered, projected to generate 15,000 tCO2e annually. This creates a sustainable revenue stream of approximately ₹45 Lakhs per year for the FPO through the voluntary carbon market, while fundamentally restoring the ecological balance of the region.`,
     },
     {
         slug: "fssai-food-startup",
@@ -170,6 +196,19 @@ export const caseStudies = [
         excerpt: "End-to-end FSSAI compliance for a D2C food brand launching 28 SKUs across 3 categories, including nutritional testing and export certification.",
         metrics: { skus: "28 Products", markets: "5 Countries", time: "45 Days", compliance: "100%" },
         image: "/images/food-compliance.png",
+        content: `Navigating food safety regulations is a major hurdle for emerging D2C food and beverage brands in India. A fast-growing organic snacks startup engaged Agrivision4u to handle their entire compliance pipeline for a major national rollout and subsequent international market entry.
+
+## The Challenge
+The client was launching 28 distinct SKUs across three categories (snacks, beverages, and supplements). They needed immediate FSSAI Central Licensing, updated nutritional panels complying with the latest FOPNL regulations, and export market clearance for the EU and US—all within a tight 2-month launch window.
+
+## Our Approach
+- **Formulation Review**: Audited all 28 product recipes to ensure every ingredient and additive fell strict limits prescribed by FSSAI and target export markets.
+- **Labelling & Claims**: Redesigned packaging artwork to comply with mandatory allergen declarations, nutritional formatting, and substantiated health claims.
+- **Testing & Licensing**: Coordinated with NABL-accredited labs for rapid nutritional profiling and expedited the FoSCoS portal application for the FSSAI Central License.
+- **Export Advisory**: Prepared US FDA facility registration and EU alignment documentation to open international sales channels.
+
+## The Results
+We achieved 100% compliance across all 28 SKUs within just 45 days. The client successfully launched in India without any regulatory bottlenecks and rapidly expanded into 5 international markets, completely securing their brand reputation from day one.`,
     },
 ];
 
