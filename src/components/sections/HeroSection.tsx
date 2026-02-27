@@ -91,6 +91,12 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Disaster Mgt</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">AI risk prediction</p>
+                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    </div>
+                                </div>
                             </motion.div>
 
                             {/* Card 2: Food Labelling */}
@@ -107,6 +113,12 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Food Labelling</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">FSSAI certification</p>
+                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    </div>
+                                </div>
                             </motion.div>
 
                             {/* Card 3: Agri Waste */}
@@ -123,6 +135,12 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Agri Waste</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Bioenergy solutions</p>
+                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    </div>
+                                </div>
                             </motion.div>
                         </div>
 
@@ -142,6 +160,12 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Data</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Drone surveys</p>
+                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    </div>
+                                </div>
                             </motion.div>
 
                             {/* Card 5: Climate Finance */}
@@ -158,6 +182,12 @@ export default function HeroSection() {
                                 </div>
                                 <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Finance</h3>
                                 <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Carbon credits advisory</p>
+                                <div className="mt-3 px-1.5 flex items-center justify-between">
+                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    </div>
+                                </div>
                             </motion.div>
                         </div>
 
