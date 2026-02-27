@@ -1,52 +1,43 @@
 "use client";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, Tag } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight, ArrowRight, Clock } from "lucide-react";
 import { blogPosts } from "@/lib/constants";
 
 export default function InsightsSection() {
     return (
-        <section className="section-padding bg-gray-50/50">
+        <section className="section-padding">
             <div className="container-max">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12 gap-4">
-                    <div>
-                        <span className="inline-block px-4 py-1.5 bg-brand-light text-brand-primary text-sm font-semibold rounded-full mb-4">Insights</span>
-                        <h2 className="text-3xl sm:text-4xl font-display font-bold text-brand-dark">
-                            Latest <span className="text-brand-primary">Insights</span>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                        <span className="pill-tag mb-4 inline-block">Insights</span>
+                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                            Latest <em className="italic">Articles</em>
                         </h2>
-                    </div>
-                    <Link href="/insights" className="inline-flex items-center gap-2 text-brand-primary font-semibold hover:gap-3 transition-all">
-                        View All <ArrowRight className="w-4 h-4" />
+                    </motion.div>
+                    <Link href="/insights" className="btn-pill-outline text-sm">
+                        View All <span className="arrow-circle-dark w-7 h-7"><ArrowRight className="w-3.5 h-3.5" /></span>
                     </Link>
-                </motion.div>
+                </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {blogPosts.map((post, i) => (
-                        <motion.article
-                            key={post.slug}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl hover:translate-x-1 transition-all"
-                        >
-                            <div className="h-40 bg-gradient-to-br from-brand-dark to-brand-primary/80 p-6 flex flex-col justify-end">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <Tag className="w-3.5 h-3.5 text-brand-accent" />
-                                    <span className="text-brand-accent text-xs font-semibold">{post.category}</span>
+                <div className="grid md:grid-cols-3 gap-5">
+                    {blogPosts.slice(0, 3).map((post, i) => (
+                        <motion.article key={post.slug} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                            <Link href={`/insights/${post.slug}`} className="group block bg-white rounded-2xl overflow-hidden border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                <div className="relative h-52 overflow-hidden">
+                                    <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                                    <span className="absolute top-4 left-4 pill-tag text-[10px]">{post.category}</span>
                                 </div>
-                                <h3 className="text-white font-display font-bold leading-tight line-clamp-2">{post.title}</h3>
-                            </div>
-                            <div className="p-6">
-                                <div className="flex items-center gap-4 text-gray-400 text-xs mb-3">
-                                    <span>{post.date}</span>
-                                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
+                                <div className="p-6">
+                                    <div className="flex items-center gap-4 text-muted text-xs mb-3">
+                                        <span>{post.date}</span>
+                                        <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
+                                    </div>
+                                    <h3 className="font-bold text-charcoal mb-2 leading-snug group-hover:text-primary transition-colors line-clamp-2">{post.title}</h3>
+                                    <p className="text-sm text-muted leading-relaxed line-clamp-2">{post.excerpt}</p>
                                 </div>
-                                <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
-                                <Link href={`/insights/${post.slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:gap-3 transition-all">
-                                    Read Article <ArrowRight className="w-4 h-4" />
-                                </Link>
-                            </div>
+                            </Link>
                         </motion.article>
                     ))}
                 </div>

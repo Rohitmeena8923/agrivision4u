@@ -1,52 +1,84 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { caseStudies } from "@/lib/constants";
 
 export default function CaseStudiesPage() {
+    const allStudies = [...caseStudies, ...caseStudies];
+
     return (
         <>
-            <section className="relative pt-32 pb-20 bg-gradient-to-br from-brand-dark via-brand-primary/90 to-brand-dark">
-                <div className="container-max px-4 sm:px-6 lg:px-8 relative z-10">
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
-                        <span className="inline-block px-4 py-1.5 bg-white/10 text-white text-sm font-semibold rounded-full mb-6">Our Work</span>
-                        <h1 className="text-4xl sm:text-5xl font-display font-bold text-white mb-4">Case <span className="text-brand-accent">Studies</span></h1>
-                        <p className="text-lg text-white/70">Real projects, real impact. Explore how Agrivision4u is transforming climate-agriculture outcomes across India.</p>
+            {/* Hero — Agrotive style */}
+            <section className="topo-bg pt-32 pb-20">
+                <div className="container-max px-4 sm:px-6 lg:px-8 text-center">
+                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+                        <span className="pill-tag mb-6 inline-block">Our Work</span>
+                        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-4">
+                            Case <em className="italic">Studies</em>
+                        </h1>
+                        <p className="text-lg text-muted max-w-xl mx-auto">Real-world impact stories from our climate-agriculture consultancy engagements across India.</p>
                     </motion.div>
                 </div>
             </section>
 
-            <section className="section-padding bg-white">
+            {/* Featured case study */}
+            <section className="px-4 sm:px-6 lg:px-8 -mt-4 pb-10">
                 <div className="container-max">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {[...caseStudies, ...caseStudies].map((cs, i) => (
-                            <motion.div
-                                key={`${cs.slug}-${i}`}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: (i % 3) * 0.1 }}
-                                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl transition-all"
-                            >
-                                <div className="h-48 bg-gradient-to-br from-brand-primary to-brand-secondary p-6 flex flex-col justify-end">
-                                    <span className="self-start px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs font-semibold rounded-full mb-auto">{cs.vertical}</span>
-                                    <h3 className="text-white font-display font-bold text-lg leading-tight">{cs.title}</h3>
+                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                        <Link href={`/case-studies/${allStudies[0]?.slug}`} className="group grid lg:grid-cols-2 gap-0 bg-white rounded-[24px] overflow-hidden border border-border hover:shadow-xl transition-all duration-300">
+                            <div className="relative h-[280px] lg:h-auto overflow-hidden">
+                                <Image src={allStudies[0]?.image || ""} alt={allStudies[0]?.title || ""} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                                <span className="absolute top-5 left-5 pill-tag">{allStudies[0]?.vertical}</span>
+                            </div>
+                            <div className="p-8 lg:p-10 flex flex-col justify-center">
+                                <h2 className="text-2xl sm:text-3xl font-bold text-charcoal mb-3 leading-tight group-hover:text-primary transition-colors">{allStudies[0]?.title}</h2>
+                                <p className="text-muted leading-relaxed mb-6">{allStudies[0]?.excerpt}</p>
+                                <div className="grid grid-cols-2 gap-4 mb-6">
+                                    {Object.entries(allStudies[0]?.metrics || {}).slice(0, 2).map(([k, v]) => (
+                                        <div key={k} className="bg-cream rounded-xl p-4 text-center">
+                                            <p className="text-xl font-data font-bold text-primary">{v}</p>
+                                            <p className="text-xs text-muted capitalize mt-1">{k}</p>
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className="p-6">
-                                    <p className="text-gray-500 text-sm leading-relaxed mb-4">{cs.excerpt}</p>
-                                    <div className="grid grid-cols-2 gap-3 mb-4">
-                                        {Object.entries(cs.metrics).map(([k, v]) => (
-                                            <div key={k} className="bg-brand-light/50 rounded-lg p-2.5 text-center">
-                                                <p className="text-brand-primary font-data font-bold text-sm">{v}</p>
-                                                <p className="text-gray-400 text-xs capitalize">{k}</p>
-                                            </div>
-                                        ))}
+                                <div className="inline-flex items-center gap-2 btn-pill w-fit text-sm">
+                                    View Case Study <span className="arrow-circle"><ArrowUpRight className="w-3.5 h-3.5" /></span>
+                                </div>
+                            </div>
+                        </Link>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* All case studies grid */}
+            <section className="section-padding pt-6">
+                <div className="container-max">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                        {allStudies.slice(1).map((cs, i) => (
+                            <motion.div key={`${cs.slug}-${i}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 3) * 0.1 }}>
+                                <Link href={`/case-studies/${cs.slug}`} className="group block bg-white rounded-2xl overflow-hidden border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                    <div className="relative h-52 overflow-hidden">
+                                        <Image src={cs.image} alt={cs.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                                        <span className="absolute top-4 left-4 pill-tag text-[10px]">{cs.vertical}</span>
                                     </div>
-                                    <Link href={`/case-studies/${cs.slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:gap-3 transition-all">
-                                        Read Full Case Study <ArrowRight className="w-4 h-4" />
-                                    </Link>
-                                </div>
+                                    <div className="p-6">
+                                        <h3 className="text-lg font-bold text-charcoal mb-2 group-hover:text-primary transition-colors leading-tight line-clamp-2">{cs.title}</h3>
+                                        <p className="text-sm text-muted leading-relaxed line-clamp-2">{cs.excerpt}</p>
+                                        <div className="grid grid-cols-2 gap-3 pt-4 mt-4 border-t border-border">
+                                            {Object.entries(cs.metrics).slice(0, 2).map(([k, v]) => (
+                                                <div key={k}>
+                                                    <p className="text-lg font-data font-bold text-primary">{v}</p>
+                                                    <p className="text-xs text-muted capitalize">{k}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
+                                            Read more <ArrowRight className="w-4 h-4" />
+                                        </div>
+                                    </div>
+                                </Link>
                             </motion.div>
                         ))}
                     </div>

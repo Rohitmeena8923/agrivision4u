@@ -1,79 +1,166 @@
 "use client";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Satellite, BarChart3, Leaf } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight, CheckCircle } from "lucide-react";
 
 export default function HeroSection() {
-    const words = ["Empowering", "India's", "Agricultural", "Climate", "Resilience"];
-
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden" id="hero">
-            {/* BG */}
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-primary/90 to-brand-dark" />
-            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
+        <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#FFF4EC] topo-bg pt-20 pb-10">
+            <div className="container-max px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-            <div className="container-max relative z-10 px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-                <div className="grid lg:grid-cols-12 gap-12 items-center">
-                    {/* Text */}
-                    <div className="lg:col-span-7">
-                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 mb-6">
-                            <Leaf className="w-4 h-4 text-brand-accent" />
-                            <span className="text-white/80 text-sm font-medium">India&apos;s Premier Climate-Agriculture Consultancy</span>
+                    {/* Left Column: Headline & copy */}
+                    <div className="flex flex-col items-start justify-center text-left z-10 max-w-xl">
+                        {/* Top pill badge */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mb-6">
+                            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-border text-sm shadow-sm">
+                                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                                New
+                                <Link href="/#services" className="flex items-center gap-1 px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold ml-1 hover:bg-primary-light transition-colors">
+                                    Explore our services <ArrowUpRight className="w-3 h-3" />
+                                </Link>
+                            </span>
                         </motion.div>
 
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[1.1] mb-6">
-                            {words.map((word, i) => (
-                                <motion.span
-                                    key={word}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.4 + i * 0.15, duration: 0.6, ease: "easeOut" }}
-                                    className="inline-block mr-3"
-                                >
-                                    {word === "Climate" ? <span className="text-brand-accent">{word}</span> : word}
-                                </motion.span>
-                            ))}
-                        </h1>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7 }}
+                            className="font-serif text-[2.75rem] sm:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.05] tracking-tight text-charcoal mb-4"
+                        >
+                            Climate-Smart<br />
+                            <span className="text-primary italic">Agriculture,</span><br />
+                            Elevated.
+                        </motion.h1>
 
-                        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="text-lg sm:text-xl text-white/70 max-w-xl mb-8 leading-relaxed">
-                            From disaster assessment and climate data analytics to carbon credit advisory, food compliance, and agricultural waste solutions — we deliver science-based, technology-enabled services across 5 critical verticals.
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.2 }}
+                            className="text-base sm:text-lg text-charcoal/80 leading-relaxed mb-8 font-sans"
+                        >
+                            India&apos;s premier consultancy for disaster management, climate data,
+                            and sustainable agri-waste solutions.
                         </motion.p>
 
-                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5 }} className="flex flex-col sm:flex-row gap-4">
-                            <Link href="#services" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-full hover:bg-yellow-400 hover:scale-105 transition-all shadow-xl shadow-brand-accent/20 text-lg">
-                                Explore Services <ArrowRight className="w-5 h-5" />
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.4 }}
+                            className="flex flex-wrap items-center gap-4 mb-10"
+                        >
+                            {/* CTA buttons — pill shaped with arrow circles */}
+                            <Link href="/#services" className="btn-pill text-sm sm:text-base">
+                                Explore Our Solutions
+                                <span className="arrow-circle"><ArrowUpRight className="w-4 h-4" /></span>
                             </Link>
-                            <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all text-lg">
-                                Book Free Consultation
+                            <Link href="/contact" className="btn-pill-outline text-sm sm:text-base bg-white/50 backdrop-blur-sm">
+                                Get a Free Consultation
+                                <span className="arrow-circle-dark w-8 h-8"><ArrowUpRight className="w-4 h-4" /></span>
                             </Link>
+                        </motion.div>
+
+                        {/* Trust badges - Original Style */}
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
+                            className="flex flex-wrap items-center gap-5 text-sm text-charcoal/80 font-medium">
+                            {["500+ Projects", "18 States", "50K+ Hectares"].map((stat) => (
+                                <span key={stat} className="flex items-center gap-1.5">
+                                    <CheckCircle className="w-4 h-4 text-primary" /> {stat}
+                                </span>
+                            ))}
                         </motion.div>
                     </div>
 
-                    {/* Stat Cards */}
-                    <div className="lg:col-span-5 hidden lg:flex flex-col gap-4">
-                        {[
-                            { icon: Satellite, label: "States Covered", value: "18+", color: "from-blue-500/20 to-blue-600/10" },
-                            { icon: BarChart3, label: "Projects Delivered", value: "500+", color: "from-green-500/20 to-green-600/10" },
-                            { icon: Leaf, label: "Hectares Assessed", value: "50,000+", color: "from-yellow-500/20 to-yellow-600/10" },
-                        ].map((stat, i) => (
+                    {/* Right Column: Masonry Grid */}
+                    <div className="grid grid-cols-2 gap-3 lg:gap-4 relative w-full mt-8 lg:mt-0 max-w-xl ml-auto">
+
+                        {/* Column 1 */}
+                        <div className="flex flex-col gap-3 lg:gap-4">
+                            {/* Card 1: Disaster Management */}
                             <motion.div
-                                key={stat.label}
-                                initial={{ opacity: 0, x: 50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 1.0 + i * 0.2, duration: 0.5 }}
-                                className={`animate-float bg-gradient-to-r ${stat.color} backdrop-blur-xl border border-white/20 rounded-2xl p-5 flex items-center gap-4`}
-                                style={{ animationDelay: `${i * 0.5}s` }}
+                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                                    <stat.icon className="w-6 h-6 text-white" />
+                                <div className="relative w-full h-[120px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                    <Image src="/images/hero/disaster-management.jpg" priority alt="Disaster Management" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                        <span className="text-[8px] text-white font-bold tracking-wider">ADVISORY</span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="text-2xl font-data font-bold text-white">{stat.value}</p>
-                                    <p className="text-sm text-white/60">{stat.label}</p>
-                                </div>
+                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Disaster Mgt</h3>
+                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">AI risk prediction</p>
                             </motion.div>
-                        ))}
+
+                            {/* Card 2: Food Labelling */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
+                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                            >
+                                <div className="relative w-full h-[100px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                    <Image src="/images/hero/food-compliance.jpg" priority alt="Food Compliance" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                        <span className="text-[8px] text-white font-bold tracking-wider">COMPLIANCE</span>
+                                    </div>
+                                </div>
+                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Food Labelling</h3>
+                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">FSSAI certification</p>
+                            </motion.div>
+
+                            {/* Card 3: Agri Waste */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                            >
+                                <div className="relative w-full h-[110px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                    <Image src="/images/hero/agri-waste.jpg" alt="Agri Waste" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                        <span className="text-[8px] text-white font-bold tracking-wider">TECHNOLOGY</span>
+                                    </div>
+                                </div>
+                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Agri Waste</h3>
+                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Bioenergy solutions</p>
+                            </motion.div>
+                        </div>
+
+                        {/* Column 2 (Staggered) */}
+                        <div className="flex flex-col gap-3 lg:gap-4 lg:pt-16 mt-4 lg:mt-0">
+                            {/* Card 4: Climate Data */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                            >
+                                <div className="relative w-full h-[140px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                    <Image src="/images/hero/climate-data.jpg" priority alt="Climate Data" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                        <span className="text-[8px] text-white font-bold tracking-wider">INTELLIGENCE</span>
+                                    </div>
+                                </div>
+                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Data</h3>
+                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Drone surveys</p>
+                            </motion.div>
+
+                            {/* Card 5: Climate Finance */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
+                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                            >
+                                <div className="relative w-full h-[130px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                    <Image src="/images/hero/climate-finance.jpg" alt="Climate Finance" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                        <span className="text-[8px] text-white font-bold tracking-wider">CARBON</span>
+                                    </div>
+                                </div>
+                                <h3 className="font-serif font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Finance</h3>
+                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Carbon credits advisory</p>
+                            </motion.div>
+                        </div>
+
                     </div>
                 </div>
             </div>

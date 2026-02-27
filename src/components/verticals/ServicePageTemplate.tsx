@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ChevronDown, Shield, Database, TrendingUp, FileCheck, Recycle, CheckCircle } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, ArrowRight, ChevronDown, Shield, Database, TrendingUp, FileCheck, Recycle, CheckCircle } from "lucide-react";
 import { services } from "@/lib/constants";
 import { useState } from "react";
 
@@ -17,60 +18,84 @@ interface ServicePageProps {
 export default function ServicePageTemplate({ serviceId, methodology, faqs, techTools }: ServicePageProps) {
     const service = services.find(s => s.id === serviceId)!;
     const Icon = iconMap[service.icon] || Shield;
-    const relatedServices = services.filter(s => s.id !== serviceId).slice(0, 2);
+    const relatedServices = services.filter(s => s.id !== serviceId).slice(0, 3);
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     return (
         <>
-            {/* Hero */}
-            <section className="relative pt-32 pb-24 overflow-hidden" style={{ background: `linear-gradient(135deg, #0D1B0F 0%, ${service.color}33 50%, #0D1B0F 100%)` }}>
-                <div className="container-max px-4 sm:px-6 lg:px-8 relative z-10">
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-                        <div className="flex items-center gap-2 text-sm text-white/50 mb-4">
-                            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            {/* Hero — Agrotive style: topo bg, centered text, no image */}
+            <section className="topo-bg pt-32 pb-20">
+                <div className="container-max px-4 sm:px-6 lg:px-8 text-center">
+                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+                        <div className="flex items-center justify-center gap-2 text-sm text-muted mb-6">
+                            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
                             <span>/</span>
-                            <Link href="/#services" className="hover:text-white transition-colors">Services</Link>
+                            <Link href="/#services" className="hover:text-primary transition-colors">Services</Link>
                             <span>/</span>
-                            <span className="text-white">{service.shortTitle}</span>
+                            <span className="text-charcoal font-medium">{service.shortTitle}</span>
                         </div>
-                        <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${service.color}30` }}>
-                            <Icon className="w-8 h-8" style={{ color: service.color }} />
+                        <span className="pill-tag mb-6 inline-block">{service.shortTitle}</span>
+                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight max-w-4xl mx-auto">
+                            {service.title.split(" ").slice(0, -1).join(" ")}{" "}
+                            <em className="italic">{service.title.split(" ").slice(-1)}</em>
+                        </h1>
+                        <p className="text-lg text-muted mt-5 max-w-2xl mx-auto leading-relaxed">{service.description}</p>
+                        <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+                            <Link href="/contact" className="btn-pill text-sm">
+                                Book Consultation <span className="arrow-circle"><ArrowUpRight className="w-3.5 h-3.5" /></span>
+                            </Link>
+                            <Link href="#methodology" className="btn-pill-outline text-sm">
+                                Our Approach <span className="arrow-circle-dark w-7 h-7"><ArrowRight className="w-3.5 h-3.5" /></span>
+                            </Link>
                         </div>
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight">{service.title}</h1>
-                        <p className="text-xl text-white/70 leading-relaxed">{service.description}</p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Stats Bar */}
-            <section className="bg-white border-b border-gray-100">
-                <div className="container-max px-4 sm:px-6 lg:px-8 py-8">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                        {Object.entries(service.stats).map(([key, val], i) => (
-                            <motion.div key={key} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="text-center">
-                                <p className="text-2xl font-data font-bold" style={{ color: service.color }}>{val}</p>
-                                <p className="text-gray-500 text-sm capitalize">{key}</p>
-                            </motion.div>
-                        ))}
+            {/* Stats — Rounded card */}
+            <section className="px-4 sm:px-6 lg:px-8 -mt-4 pb-6">
+                <div className="container-max">
+                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="bg-primary rounded-[24px] px-8 sm:px-16 py-14">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                            {Object.entries(service.stats).map(([key, val], i) => (
+                                <motion.div key={key} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                                    <p className="text-3xl sm:text-4xl font-data font-bold text-white">{val}</p>
+                                    <p className="text-white/50 text-sm mt-1 capitalize">{key}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Service Image Hero */}
+            <section className="px-4 sm:px-6 lg:px-8 py-6">
+                <div className="container-max">
+                    <div className="relative rounded-[24px] overflow-hidden h-[300px] sm:h-[400px]">
+                        <Image src={service.image} alt={service.title} fill className="object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     </div>
                 </div>
             </section>
 
-            {/* Our Approach */}
-            <section className="section-padding bg-white">
+            {/* Methodology */}
+            <section id="methodology" className="section-padding">
                 <div className="container-max">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                        <span className="inline-block px-4 py-1.5 bg-brand-light text-brand-primary text-sm font-semibold rounded-full mb-4">Our Approach</span>
-                        <h2 className="text-3xl sm:text-4xl font-display font-bold text-brand-dark">How We <span className="text-brand-primary">Work</span></h2>
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
+                        <span className="pill-tag mb-4 inline-block">Our Approach</span>
+                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                            How We <em className="italic">Work</em>
+                        </h2>
                     </motion.div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                         {methodology.map((step, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="relative text-center">
-                                <div className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center font-bold text-white" style={{ backgroundColor: service.color }}>
-                                    {i + 1}
+                            <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                                className="bg-white rounded-2xl p-8 border border-border text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-14 h-14 mx-auto mb-5 rounded-xl flex items-center justify-center font-data font-bold text-white text-lg bg-primary">
+                                    {String(i + 1).padStart(2, "0")}
                                 </div>
-                                <h3 className="font-display font-bold text-brand-dark mb-2">{step}</h3>
-                                {i < methodology.length - 1 && <div className="hidden lg:block absolute top-6 left-[60%] w-[80%] h-0.5 bg-gray-200" />}
+                                <h3 className="font-bold text-charcoal text-lg">{step}</h3>
                             </motion.div>
                         ))}
                     </div>
@@ -78,21 +103,25 @@ export default function ServicePageTemplate({ serviceId, methodology, faqs, tech
             </section>
 
             {/* Sub-Services */}
-            <section className="section-padding bg-gray-50/50">
+            <section className="section-padding pt-0">
                 <div className="container-max">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                        <h2 className="text-3xl sm:text-4xl font-display font-bold text-brand-dark">Our <span className="text-brand-primary">Sub-Services</span></h2>
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14">
+                        <span className="pill-tag mb-4 inline-block">What We Offer</span>
+                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                            Our <em className="italic">Sub-Services</em>
+                        </h2>
                     </motion.div>
-                    <div className="grid md:grid-cols-2 gap-8">
+                    <div className="grid md:grid-cols-2 gap-5">
                         {service.subServices.map((sub, i) => (
-                            <motion.div key={sub.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
+                            <motion.div key={sub.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                                className="bg-white rounded-2xl p-7 border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-1" style={{ backgroundColor: `${service.color}15` }}>
-                                        <CheckCircle className="w-5 h-5" style={{ color: service.color }} />
+                                    <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 mt-0.5 bg-accent group-hover:bg-primary transition-colors duration-300">
+                                        <CheckCircle className="w-5 h-5 text-primary group-hover:text-white transition-colors duration-300" />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-display font-bold text-brand-dark mb-2">{sub.title}</h3>
-                                        <p className="text-gray-500 leading-relaxed">{sub.desc}</p>
+                                        <h3 className="text-lg font-bold text-charcoal mb-2">{sub.title}</h3>
+                                        <p className="text-sm text-muted leading-relaxed">{sub.desc}</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -101,38 +130,45 @@ export default function ServicePageTemplate({ serviceId, methodology, faqs, tech
                 </div>
             </section>
 
-            {/* Tools & Technology */}
-            <section className="section-padding bg-white">
+            {/* Tech Tools — pill tags like partners */}
+            <section className="px-4 sm:px-6 lg:px-8 pb-10">
                 <div className="container-max">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-                        <h2 className="text-3xl font-display font-bold text-brand-dark">Tools & <span className="text-brand-primary">Technology</span></h2>
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="bg-white rounded-[24px] p-12 border border-border text-center">
+                        <span className="pill-tag mb-4 inline-block">Technology Stack</span>
+                        <h3 className="text-2xl font-bold text-charcoal mb-8">Tools & Technology</h3>
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {techTools.map((tool, i) => (
+                                <motion.span key={tool} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}
+                                    className="px-6 py-2.5 rounded-full bg-cream border border-border text-sm font-medium text-slate hover:bg-accent hover:text-primary hover:border-accent transition-all cursor-default">
+                                    {tool}
+                                </motion.span>
+                            ))}
+                        </div>
                     </motion.div>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        {techTools.map((tool, i) => (
-                            <motion.span key={tool} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }} className="px-5 py-2.5 bg-brand-light rounded-full text-sm font-medium text-brand-dark border border-brand-primary/10 hover:bg-brand-primary hover:text-white transition-colors cursor-default">
-                                {tool}
-                            </motion.span>
-                        ))}
-                    </div>
                 </div>
             </section>
 
             {/* FAQs */}
-            <section className="section-padding bg-gray-50/50">
+            <section className="section-padding">
                 <div className="container-max max-w-3xl">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-                        <h2 className="text-3xl font-display font-bold text-brand-dark">Frequently Asked <span className="text-brand-primary">Questions</span></h2>
+                        <span className="pill-tag mb-4 inline-block">FAQ</span>
+                        <h2 className="text-4xl font-bold tracking-tight">
+                            Common <em className="italic">Questions</em>
+                        </h2>
                     </motion.div>
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                         {faqs.map((faq, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
-                                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left">
-                                    <span className="font-semibold text-brand-dark pr-4">{faq.q}</span>
-                                    <ChevronDown className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${openFaq === i ? "rotate-180" : ""}`} />
+                            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                                className="faq-item rounded-2xl">
+                                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between text-left">
+                                    <span className="font-semibold text-charcoal pr-4">{faq.q}</span>
+                                    <ChevronDown className={`w-5 h-5 text-muted shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180 text-primary" : ""}`} />
                                 </button>
                                 {openFaq === i && (
-                                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} className="px-5 pb-5">
-                                        <p className="text-gray-500 leading-relaxed">{faq.a}</p>
+                                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} className="mt-3 pt-3 border-t border-border/50">
+                                        <p className="text-sm text-muted leading-relaxed">{faq.a}</p>
                                     </motion.div>
                                 )}
                             </motion.div>
@@ -141,40 +177,42 @@ export default function ServicePageTemplate({ serviceId, methodology, faqs, tech
                 </div>
             </section>
 
-            {/* Related Verticals */}
-            <section className="section-padding bg-white">
+            {/* Related Services */}
+            <section className="section-padding pt-0">
                 <div className="container-max">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-                        <h2 className="text-3xl font-display font-bold text-brand-dark">Related <span className="text-brand-primary">Services</span></h2>
-                    </motion.div>
-                    <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                        {relatedServices.map((rs) => {
-                            const RSIcon = iconMap[rs.icon] || Shield;
-                            return (
-                                <Link key={rs.id} href={rs.href} className="group flex items-start gap-4 p-6 bg-brand-light/50 rounded-2xl hover:bg-brand-light transition-colors">
-                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${rs.color}20` }}>
-                                        <RSIcon className="w-6 h-6" style={{ color: rs.color }} />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-display font-bold text-brand-dark group-hover:text-brand-primary transition-colors">{rs.shortTitle}</h3>
-                                        <p className="text-sm text-gray-500 mt-1 line-clamp-2">{rs.description}</p>
-                                    </div>
-                                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-brand-primary shrink-0 mt-1 transition-colors" />
-                                </Link>
-                            );
-                        })}
+                    <h2 className="text-3xl font-bold text-charcoal mb-8">Related <em className="italic">Services</em></h2>
+                    <div className="grid md:grid-cols-3 gap-5">
+                        {relatedServices.map((rs) => (
+                            <Link key={rs.id} href={rs.href} className="service-image-card group block h-[280px]">
+                                <Image src={rs.image} alt={rs.shortTitle} fill className="object-cover" />
+                                <div className="overlay" />
+                                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                                    <h3 className="text-lg font-bold text-white">{rs.shortTitle}</h3>
+                                    <p className="text-sm text-white/60 line-clamp-2 mt-1">{rs.description}</p>
+                                </div>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="py-20 bg-gradient-to-br from-brand-dark to-brand-primary/80">
-                <div className="container-max px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">Ready to get started?</h2>
-                    <p className="text-white/60 mb-8 max-w-xl mx-auto">Book a free consultation with our {service.shortTitle} experts today.</p>
-                    <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-accent text-brand-dark font-bold rounded-full hover:bg-yellow-400 hover:scale-105 transition-all shadow-xl">
-                        Book Consultation <ArrowRight className="w-5 h-5" />
-                    </Link>
+            {/* CTA — Rounded card */}
+            <section className="px-4 sm:px-6 lg:px-8 py-10">
+                <div className="container-max">
+                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="relative rounded-[24px] overflow-hidden h-[320px]">
+                        <Image src={service.image} alt="CTA" fill className="object-cover" />
+                        <div className="absolute inset-0 bg-black/50" />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-10">
+                            <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-3">
+                                Ready to Get <em className="italic">Started?</em>
+                            </h2>
+                            <p className="text-white/60 mb-8 max-w-lg">Book a free consultation with our {service.shortTitle} experts today.</p>
+                            <Link href="/contact" className="btn-pill text-sm">
+                                Book Consultation <span className="arrow-circle"><ArrowUpRight className="w-3.5 h-3.5" /></span>
+                            </Link>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </>

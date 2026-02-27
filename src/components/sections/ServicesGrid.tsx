@@ -1,50 +1,75 @@
 "use client";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Database, TrendingUp, FileCheck, Recycle } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { services } from "@/lib/constants";
-
-const iconMap: Record<string, React.ElementType> = { Shield, Database, TrendingUp, FileCheck, Recycle };
 
 export default function ServicesGrid() {
     return (
-        <section id="services" className="section-padding bg-white">
+        <section id="services" className="section-padding">
             <div className="container-max">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                    <span className="inline-block px-4 py-1.5 bg-brand-light text-brand-primary text-sm font-semibold rounded-full mb-4">Our Expertise</span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-dark mb-4">
-                        Five Verticals.<br /><span className="text-brand-primary">One Integrated Platform.</span>
-                    </h2>
-                    <p className="text-gray-500 max-w-2xl mx-auto text-lg">Comprehensive climate-agriculture consultancy covering every aspect of India&apos;s agricultural transformation.</p>
+                {/* Header row */}
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                        <span className="pill-tag mb-4 inline-block">Services Section</span>
+                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                            What We <em className="italic">Offer</em>
+                        </h2>
+                    </motion.div>
+                    <div className="flex items-center gap-3">
+                        <button className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted hover:border-primary hover:text-primary transition-all">
+                            <ArrowLeft className="w-5 h-5" />
+                        </button>
+                        <button className="arrow-circle-dark w-12 h-12">
+                            <ArrowRight className="w-5 h-5" />
+                        </button>
+                    </div>
+                </div>
+
+                {/* Service cards grid */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    {services.slice(0, 4).map((service, i) => (
+                        <motion.div key={service.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                            <Link href={service.href} className="service-image-card block">
+                                <Image src={service.image} alt={service.shortTitle} fill className="object-cover" />
+                                <div className="overlay" />
+                                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                                    <h3 className="text-lg font-bold text-white mb-1">{service.shortTitle}</h3>
+                                    <p className="text-white/70 text-sm leading-relaxed line-clamp-2">{service.description.slice(0, 80)}.</p>
+                                </div>
+                                <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                    <span className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                        <ArrowUpRight className="w-5 h-5 text-white" />
+                                    </span>
+                                </div>
+                            </Link>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Fifth service — wide card */}
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="mt-5">
+                    <Link href={services[4]?.href || "#"} className="relative block rounded-[20px] overflow-hidden h-[240px] group">
+                        <Image src={services[4]?.image || "/images/hero-banner.png"} alt={services[4]?.shortTitle || "Service"} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+                        <div className="absolute bottom-0 left-0 p-8 z-10 max-w-lg">
+                            <h3 className="text-2xl font-bold text-white mb-2">{services[4]?.shortTitle}</h3>
+                            <p className="text-white/70 text-sm leading-relaxed">{services[4]?.description}</p>
+                        </div>
+                        <div className="absolute bottom-6 right-6 z-10">
+                            <span className="btn-pill text-sm">View Service <span className="arrow-circle"><ArrowUpRight className="w-3.5 h-3.5" /></span></span>
+                        </div>
+                    </Link>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {services.map((service, i) => {
-                        const Icon = iconMap[service.icon] || Shield;
-                        return (
-                            <motion.div
-                                key={service.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className={`group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${i >= 3 ? "lg:col-span-1" : ""}`}
-                            >
-                                <div className="absolute left-0 top-6 bottom-6 w-1 rounded-full transition-all duration-300 group-hover:w-1.5" style={{ backgroundColor: service.color }} />
-                                <div className="pl-4">
-                                    <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-colors" style={{ backgroundColor: `${service.color}15` }}>
-                                        <Icon className="w-7 h-7" style={{ color: service.color }} />
-                                    </div>
-                                    <h3 className="text-xl font-display font-bold text-brand-dark mb-2">{service.shortTitle}</h3>
-                                    <p className="text-gray-500 text-sm leading-relaxed mb-4">{service.description}</p>
-                                    <Link href={service.href} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:gap-3 transition-all">
-                                        Learn More <ArrowRight className="w-4 h-4" />
-                                    </Link>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
-                </div>
+                {/* See All button */}
+                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-10">
+                    <Link href="/#services" className="btn-pill-outline">
+                        See All Services
+                        <span className="arrow-circle-dark w-8 h-8"><ArrowUpRight className="w-4 h-4" /></span>
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );

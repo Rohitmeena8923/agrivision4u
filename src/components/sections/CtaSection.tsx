@@ -1,28 +1,33 @@
 "use client";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export default function CtaSection() {
     return (
-        <section className="relative py-24 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-[#0f2b11] to-brand-dark" />
-            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 25% 50%, rgba(249,168,37,0.3) 0%, transparent 50%), radial-gradient(circle at 75% 50%, rgba(46,125,50,0.3) 0%, transparent 50%)" }} />
-            <div className="container-max relative z-10 px-4 sm:px-6 lg:px-8 text-center">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-accent/20 rounded-full mb-6">
-                        <Sparkles className="w-4 h-4 text-brand-accent" />
-                        <span className="text-brand-accent text-sm font-semibold">Let&apos;s Build Resilience Together</span>
+        <section className="px-4 sm:px-6 lg:px-8 py-10">
+            <div className="container-max">
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="relative rounded-[24px] overflow-hidden h-[400px] sm:h-[320px]">
+                    <Image src="/images/hero-banner.png" alt="CTA" fill className="object-cover" />
+                    <div className="absolute inset-0 bg-black/50" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-10">
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-2xl mb-3">
+                            Ready to Transform Your<br />Agricultural <em className="italic">Practices?</em>
+                        </h2>
+                        <p className="text-white/60 mb-8 max-w-lg">Schedule a free 30-minute strategy call with our experts. No obligations, just insights.</p>
+                        <div className="flex flex-wrap items-center justify-center gap-4">
+                            <Link href="/contact" className="btn-pill text-sm">
+                                Start Your Free Trial
+                                <span className="arrow-circle"><ArrowUpRight className="w-3.5 h-3.5" /></span>
+                            </Link>
+                            <Link href="/contact" className="btn-pill-outline bg-white/10 border-white/20 text-white hover:bg-white/20 text-sm">
+                                Talk to an Expert
+                                <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0"><ArrowUpRight className="w-3.5 h-3.5 text-white" /></span>
+                            </Link>
+                        </div>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white max-w-3xl mx-auto mb-6 leading-tight">
-                        Ready to future-proof your <span className="text-brand-accent">agricultural operations?</span>
-                    </h2>
-                    <p className="text-white/60 text-lg max-w-xl mx-auto mb-10">
-                        Schedule a free consultation with our climate-agriculture experts and discover how data-driven solutions can transform your outcomes.
-                    </p>
-                    <Link href="/contact" className="inline-flex items-center gap-2 px-10 py-5 bg-brand-accent text-brand-dark font-bold rounded-full text-lg hover:bg-yellow-400 hover:scale-105 transition-all shadow-xl shadow-brand-accent/20">
-                        Schedule a Consultation <ArrowRight className="w-5 h-5" />
-                    </Link>
                 </motion.div>
             </div>
         </section>
