@@ -6,7 +6,7 @@ import { ArrowUpRight, CheckCircle } from "lucide-react";
 
 export default function HeroSection() {
     return (
-        <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#FFF4EC] topo-bg pt-20 pb-10">
+        <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#FFF4EC] topo-bg pt-16 pb-6 md:pb-8">
             <div className="container-max px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
@@ -62,124 +62,140 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right Column: Masonry Grid */}
-                    <div className="grid grid-cols-2 gap-3 lg:gap-4 relative w-full mt-8 lg:mt-0 max-w-xl ml-auto">
+                    <div className="relative w-full mt-8 lg:mt-0 max-w-xl ml-auto p-4 sm:p-5 lg:p-6">
+                        {/* Custom Dashed Border */}
+                        <div className="absolute inset-0 pointer-events-none">
+                            <svg width="100%" height="100%" className="rounded-[40px]">
+                                <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" fill="none" rx="39" ry="39" stroke="currentColor" strokeWidth="2" strokeDasharray="16 16" className="text-primary/30" />
+                            </svg>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 relative w-full">
 
-                        {/* Column 1 */}
-                        <div className="flex flex-col gap-3 lg:gap-4">
-                            {/* Card 1: Disaster Management */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
-                            >
-                                <div className="relative w-full h-[120px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
-                                    <Image src="/images/hero/disaster-management.jpg" priority alt="Disaster Management" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
-                                        <span className="text-[8px] text-white font-bold tracking-wider">ADVISORY</span>
+                            {/* Column 1 */}
+                            <Link href="/services/disaster-management" className="flex flex-col gap-3">
+                                {/* Card 1: Disaster Management */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+                                    className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                                >
+                                    <div className="relative w-full h-[80px] xl:h-[100px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                        <Image src="/images/hero/disaster-management.jpg" priority alt="Disaster Management" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                        <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                            <span className="text-[8px] text-white font-bold tracking-wider">ADVISORY</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Disaster Mgt</h3>
-                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">AI risk prediction</p>
-                                <div className="mt-3 px-1.5 flex items-center gap-2">
-                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
-                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
-                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Disaster Mgt</h3>
+                                    <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">AI risk prediction</p>
+                                    <div className="mt-3 px-1.5 flex items-center gap-2">
+                                        <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                        <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                            <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </Link>
 
-                            {/* Card 2: Food Labelling */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
-                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
-                            >
-                                <div className="relative w-full h-[100px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
-                                    <Image src="/images/hero/food-compliance.jpg" priority alt="Food Compliance" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
-                                        <span className="text-[8px] text-white font-bold tracking-wider">COMPLIANCE</span>
+                            <Link href="/services/food-compliance" className="flex flex-col gap-3 mt-3">
+                                {/* Card 2: Food Labelling */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
+                                    className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                                >
+                                    <div className="relative w-full h-[60px] xl:h-[80px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                        <Image src="/images/hero/food-compliance.jpg" priority alt="Food Compliance" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                        <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                            <span className="text-[8px] text-white font-bold tracking-wider">COMPLIANCE</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Food Labelling</h3>
-                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">FSSAI certification</p>
-                                <div className="mt-3 px-1.5 flex items-center gap-2">
-                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
-                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
-                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Food Labelling</h3>
+                                    <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">FSSAI certification</p>
+                                    <div className="mt-3 px-1.5 flex items-center gap-2">
+                                        <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                        <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                            <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </Link>
 
-                            {/* Card 3: Agri Waste */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
-                            >
-                                <div className="relative w-full h-[110px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
-                                    <Image src="/images/hero/agri-waste.jpg" alt="Agri Waste" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
-                                        <span className="text-[8px] text-white font-bold tracking-wider">TECHNOLOGY</span>
+                            <Link href="/services/agri-waste-to-value" className="flex flex-col gap-3 mt-3">
+                                {/* Card 3: Agri Waste */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+                                    className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                                >
+                                    <div className="relative w-full h-[70px] xl:h-[90px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                        <Image src="/images/hero/agri-waste.jpg" alt="Agri Waste" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                        <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                            <span className="text-[8px] text-white font-bold tracking-wider">TECHNOLOGY</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Agri Waste</h3>
-                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Bioenergy solutions</p>
-                                <div className="mt-3 px-1.5 flex items-center gap-2">
-                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
-                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
-                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Agri Waste</h3>
+                                    <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Bioenergy solutions</p>
+                                    <div className="mt-3 px-1.5 flex items-center gap-2">
+                                        <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                        <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                            <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </Link>
                         </div>
 
                         {/* Column 2 (Staggered) */}
-                        <div className="flex flex-col gap-3 lg:gap-4 lg:pt-16 mt-4 lg:mt-0">
-                            {/* Card 4: Climate Data */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
-                            >
-                                <div className="relative w-full h-[140px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
-                                    <Image src="/images/hero/climate-data.jpg" priority alt="Climate Data" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
-                                        <span className="text-[8px] text-white font-bold tracking-wider">INTELLIGENCE</span>
+                        <div className="flex flex-col gap-3 pt-6 lg:pt-8 mt-4 lg:mt-0">
+                            <Link href="/services/climate-data" className="flex flex-col gap-3">
+                                {/* Card 4: Climate Data */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+                                    className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                                >
+                                    <div className="relative w-full h-[100px] xl:h-[120px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                        <Image src="/images/hero/climate-data.jpg" priority alt="Climate Data" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                        <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                            <span className="text-[8px] text-white font-bold tracking-wider">INTELLIGENCE</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Data</h3>
-                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Drone surveys</p>
-                                <div className="mt-3 px-1.5 flex items-center gap-2">
-                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
-                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
-                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Data</h3>
+                                    <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Drone surveys</p>
+                                    <div className="mt-3 px-1.5 flex items-center gap-2">
+                                        <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                        <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                            <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </Link>
 
-                            {/* Card 5: Climate Finance */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
-                                className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
-                            >
-                                <div className="relative w-full h-[130px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
-                                    <Image src="/images/hero/climate-finance.jpg" alt="Climate Finance" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                    <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
-                                        <span className="text-[8px] text-white font-bold tracking-wider">CARBON</span>
+                            <Link href="/services/climate-finance" className="flex flex-col gap-3 mt-3">
+                                {/* Card 5: Climate Finance */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
+                                    className="bg-white/80 backdrop-blur-md border border-white/40 rounded-2xl p-2 pb-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group cursor-pointer"
+                                >
+                                    <div className="relative w-full h-[90px] xl:h-[110px] rounded-xl overflow-hidden mb-2.5 bg-gray-100">
+                                        <Image src="/images/hero/climate-finance.jpg" alt="Climate Finance" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                        <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/30">
+                                            <span className="text-[8px] text-white font-bold tracking-wider">CARBON</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Finance</h3>
-                                <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Carbon credits advisory</p>
-                                <div className="mt-3 px-1.5 flex items-center gap-2">
-                                    <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
-                                    <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
-                                        <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                    <h3 className="font-display font-bold text-base text-charcoal mb-0 px-1.5 leading-tight">Climate Finance</h3>
+                                    <p className="text-[11px] text-charcoal/60 px-1.5 font-sans mt-0.5">Carbon credits advisory</p>
+                                    <div className="mt-3 px-1.5 flex items-center gap-2">
+                                        <span className="text-[10px] font-semibold text-charcoal/50 group-hover:text-primary transition-colors">View more</span>
+                                        <div className="w-5 h-5 rounded-full border border-border bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                                            <ArrowUpRight className="w-3 h-3 text-charcoal/50 group-hover:text-white transition-colors" />
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </Link>
+
                         </div>
-
                     </div>
                 </div>
             </div>
